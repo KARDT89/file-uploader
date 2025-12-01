@@ -3,6 +3,7 @@ import ejsLayouts from "express-ejs-layouts";
 import session from "express-session";
 import passport from "passport";
 import authRouter from "./routes/auth.routes.js";
+import initializePassport from "./config/passport.js";
 
 const app = new express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ app.set("view engine", "ejs");
 // app.set("layout", "layouts/main");
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+initializePassport();
 app.use(passport.session());
 
 app.get("/", (req, res) => {
