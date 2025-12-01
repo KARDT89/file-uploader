@@ -6,7 +6,7 @@ const router = new Router();
 
 router.get("/sign-up", getSignup);
 router.get("/login", getLogin);
-router.post("/login", postSignup);
+router.post("/sign-up", postSignup);
 router.post(
     "/login",
     passport.authenticate("local", {
