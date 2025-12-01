@@ -1,3 +1,5 @@
+import prisma from "../lib/prisma.js";
+
 function getSignup(req, res) {
   res.render("pages/sign-up");
 }

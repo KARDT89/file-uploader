@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/KARDT89/file-uploader#readme",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.0.1",
+    "@prisma/client": "^7.0.1",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
@@ -33,5 +35,8 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "prettier": "^3.7.3"
+  },
+  "devDependencies": {
+    "prisma": "^7.0.1"
   }
 }
