@@ -14,12 +14,12 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
-// app.use(ejsLayouts);
-// app.set("layout", "layouts/main");
+app.use(ejsLayouts);
+app.set("layout", "layouts/main-layout");
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 initializePassport();
