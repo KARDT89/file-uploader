@@ -3,16 +3,14 @@ import ejsLayouts from "express-ejs-layouts";
 import session from "express-session";
 import passport from "passport";
 import authRouter from "./routes/auth.routes.js";
-import homeRouter from "./routes/home.routes.js"
-import fileRouter from "./routes/file.routes.js"
+import homeRouter from "./routes/home.routes.js";
+import fileRouter from "./routes/file.routes.js";
 import initializePassport from "./config/passport.js";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import prisma from "./lib/prisma.js";
 
-
 const app = new express();
 const PORT = 3000;
-
 
 app.use((req, res, next) => {
   console.log(`API Endpoint: ${req.method} ${req.originalUrl}`);
