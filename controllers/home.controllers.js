@@ -1,16 +1,8 @@
 async function getHomePage(req, res) {
-  if (!req.user) {
-    res.render("pages/homepage", { user: req.user });
-  } else {
-    res.redirect("/dashboard");
-  }
+  res.render("pages/homepage", { user: req.user });
 }
 async function getDashboard(req, res) {
-  if (req.user) {
-    res.render("pages/dashboard", { user: req.user });
-  } else {
-    res.redirect("/login");
-  }
+  res.render("pages/dashboard", { user: req.user });
 }
 
 export { getHomePage, getDashboard };

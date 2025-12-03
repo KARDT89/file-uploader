@@ -7,7 +7,6 @@ import fileRouter from "./routes/file.routes.js";
 import initializePassport from "./config/passport.js";
 import session from "./config/session.js";
 
-
 const app = new express();
 const PORT = 3000;
 
@@ -24,7 +23,7 @@ app.set("view engine", "ejs");
 app.use(ejsLayouts);
 app.set("layout", "layouts/main-layout");
 
-session(app)
+session(app);
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());

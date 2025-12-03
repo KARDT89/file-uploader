@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { getLogin, getSignup, postSignup } from "../controllers/auth.controllers.js";
 import passport from "passport";
+import { ensureGuest } from "../middleware/auth.middleware.js";
 
 const router = new Router();
 
-router.get("/sign-up", getSignup);
-router.get("/login", getLogin);
+router.get("/sign-up", ensureGuest, getSignup);
+router.get("/login", ensureGuest, getLogin);
 router.post("/sign-up", postSignup);
 router.post(
   "/login",

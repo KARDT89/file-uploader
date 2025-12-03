@@ -1,5 +1,5 @@
-:root{
-  --bg: #0f1720;        /* deep navy, not pure black */
+:root {
+  --bg: #0f1720; /* deep navy, not pure black */
   --surface: #111827;
   --muted: #9ca3af;
   --text: #e6eef8;
@@ -9,8 +9,12 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
   line-height: 1.5;
 }
-
-
