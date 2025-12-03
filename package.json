@@ -23,6 +23,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.0.1",
     "@prisma/client": "^7.0.1",
+    "@quixo3/prisma-session-store": "^3.1.13",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
@@ -35,8 +36,8 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "prettier": "^3.7.3",
     "nodemon": "^3.1.11",
+    "prettier": "^3.7.3",
     "prisma": "^7.0.1"
   }
 }
