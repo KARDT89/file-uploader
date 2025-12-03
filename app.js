@@ -3,6 +3,7 @@ import ejsLayouts from "express-ejs-layouts";
 import session from "express-session";
 import passport from "passport";
 import authRouter from "./routes/auth.routes.js";
+import homeRouter from "./routes/home.routes.js"
 import initializePassport from "./config/passport.js";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import prisma from "./lib/prisma.js";
@@ -41,10 +42,8 @@ app.use(
 initializePassport();
 app.use(passport.session());
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 app.use("/", authRouter);
+app.get("/", homeRouter);
 
 // 404 Not Found handler (must be placed last)
 app.use((req, res, next) => {

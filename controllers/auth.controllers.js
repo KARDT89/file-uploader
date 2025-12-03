@@ -2,11 +2,19 @@ import prisma from "../lib/prisma.js";
 import bcrypt from "bcryptjs";
 
 function getSignup(req, res) {
-  res.render("pages/sign-up");
+  if (req.user) {
+    res.redirect("/");
+  } else {
+    res.render("pages/sign-up", { layout: "layouts/blank" });
+  }
 }
 
 function getLogin(req, res) {
-  res.render("pages/login");
+  if (req.user) {
+    res.redirect("/");
+  } else {
+    res.render("pages/login", { layout: "layouts/blank" });
+  }
 }
 
 async function postSignup(req, res, next) {
@@ -17,7 +25,7 @@ async function postSignup(req, res, next) {
         username: req.body.username,
         password: hashedPassword
       }
-    })
+    });
     res.redirect("/");
   } catch (err) {
     return next(err);
