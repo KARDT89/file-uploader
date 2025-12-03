@@ -3,17 +3,17 @@ import bcrypt from "bcryptjs";
 
 function getSignup(req, res) {
   if (req.user) {
-    res.redirect("/");
+    res.redirect("/dashboard");
   } else {
-    res.render("pages/sign-up", { layout: "layouts/blank" });
+    res.render("pages/sign-up", { user: req.user });
   }
 }
 
 function getLogin(req, res) {
   if (req.user) {
-    res.redirect("/");
+    res.redirect("/dashboard");
   } else {
-    res.render("pages/login", { layout: "layouts/blank" });
+    res.render("pages/login", { user: req.user });
   }
 }
 

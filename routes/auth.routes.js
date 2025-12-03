@@ -10,7 +10,7 @@ router.post("/sign-up", postSignup);
 router.post(
     "/login",
     passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/dashboard",
         failureRedirect: "/login",
         failureMessage: true,
     })
