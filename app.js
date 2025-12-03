@@ -1,13 +1,12 @@
 import express from "express";
 import ejsLayouts from "express-ejs-layouts";
-import session from "express-session";
 import passport from "passport";
 import authRouter from "./routes/auth.routes.js";
 import homeRouter from "./routes/home.routes.js";
 import fileRouter from "./routes/file.routes.js";
 import initializePassport from "./config/passport.js";
-import { PrismaSessionStore } from "@quixo3/prisma-session-store";
-import prisma from "./lib/prisma.js";
+import session from "./config/session.js";
+
 
 const app = new express();
 const PORT = 3000;
@@ -25,22 +24,9 @@ app.set("view engine", "ejs");
 app.use(ejsLayouts);
 app.set("layout", "layouts/main-layout");
 
-app.use(
-  session({
-    cookie: {
-      maxAge: 7 * 24 * 60 * 60 * 1000 // ms
-    },
-    secret: "kevster",
-    resave: false,
-    saveUninitialized: true,
-    store: new PrismaSessionStore(prisma, {
-      checkPeriod: 2 * 60 * 1000, //ms
-      dbRecordIdIsSessionId: true,
-      dbRecordIdFunction: undefined
-    })
-  })
-);
+session(app)
 initializePassport();
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", authRouter);
