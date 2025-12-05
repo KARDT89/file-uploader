@@ -12,6 +12,8 @@ model User {
   username String   @unique
   password String
   folders  Folder[]
+
+  @@map("users")
 }
 
 model Session {
@@ -19,6 +21,8 @@ model Session {
   sid       String   @unique
   data      String   @db.Text
   expiresAt DateTime
+
+  @@map("session")
 }
 
 model Folder {
@@ -26,4 +30,6 @@ model Folder {
   name   String
   userId String
   user   User   @relation(fields: [userId], references: [id])
+
+  @@map("folders")
 }
