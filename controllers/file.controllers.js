@@ -14,8 +14,9 @@ function postFileUpload(req, res) {
       message: "Uploaded!",
       data: result
     });
+    console.log(result);
+    
   });
-  
 }
 
 export { postFileUpload };
