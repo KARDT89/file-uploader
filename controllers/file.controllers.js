@@ -15,7 +15,6 @@ function postFileUpload(req, res) {
       data: result
     });
     console.log(result);
-    
   });
 }
 
