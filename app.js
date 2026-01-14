@@ -4,6 +4,7 @@ import passport from "passport";
 import authRouter from "./routes/auth.routes.js";
 import homeRouter from "./routes/home.routes.js";
 import fileRouter from "./routes/file.routes.js";
+import folderRouter from "./routes/folder.routes.js";
 import initializePassport from "./config/passport.js";
 import session from "./config/session.js";
 
@@ -31,6 +32,7 @@ app.use(passport.session());
 app.use("/", authRouter);
 app.use("/", homeRouter);
 app.use("/", fileRouter);
+app.use("/", folderRouter);
 
 // 404 Not Found handler (must be placed last)
 app.use((req, res, next) => {
