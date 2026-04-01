@@ -6,23 +6,11 @@ import { ensureGuest } from "./auth.middleware.js";
 const router = new Router();
 
 router.get("/register", ensureGuest, controller.getSignup);
+router.post("/register", controller.postSignup);
+
 router.get("/login", ensureGuest, controller.getLogin);
-router.post("/sign-up", controller.postSignup);
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/login",
-    failureMessage: true
-  })
-);
-router.get("/log-out", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+router.post("/login", controller.postLogin);
+
+router.get("/log-out", controller.logout);
 
 export default router;

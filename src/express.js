@@ -16,7 +16,7 @@ export function createExpressApplication() {
     next();
   });
 
-  app.use(express.static("public"));
+  app.use(express.static("./src/public"));
   app.use(express.urlencoded({ extended: false }));
 
   app.set("views", "./src/views");

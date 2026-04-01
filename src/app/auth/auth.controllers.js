@@ -1,5 +1,6 @@
 import prisma from "../../lib/prisma.js";
 import bcrypt from "bcryptjs";
+import passport from "passport";
 
 function getSignup(req, res) {
   res.render("pages/register", { user: req.user });
@@ -15,6 +16,7 @@ async function postSignup(req, res, next) {
     await prisma.user.create({
       data: {
         username: req.body.username,
+        email: req.body.email,
         password: hashedPassword
       }
     });
@@ -24,4 +26,27 @@ async function postSignup(req, res, next) {
   }
 }
 
-export { getLogin, getSignup, postSignup };
+async function postLogin(req, res) {
+  // Implementation for handling login
+  await passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/login",
+    failureMessage: true
+  });
+
+  return res.json({ message: "Login successful" });
+}
+
+async function logout(res, req, next) {
+  // Implementation for handling login
+  return (req, res, next) => {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  };
+}
+
+export { getLogin, getSignup, postSignup, postLogin, logout };

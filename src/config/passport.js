@@ -7,14 +7,14 @@ const LocalStrategy = passportLocal.Strategy;
 
 export default function initializePassport() {
   passport.use(
-    new LocalStrategy(async (username, password, done) => {
+    new LocalStrategy(async (email, password, done) => {
       try {
         const user = await prisma.user.findUnique({
-          where: { username: username }
+          where: { email: email }
         });
 
         if (!user) {
-          return done(null, false, { message: "Incorrect username" });
+          return done(null, false, { message: "Incorrect email" });
         }
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
