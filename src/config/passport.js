@@ -7,7 +7,7 @@ const LocalStrategy = passportLocal.Strategy;
 
 export default function initializePassport() {
   passport.use(
-    new LocalStrategy(async (email, password, done) => {
+    new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
       try {
         const user = await prisma.user.findUnique({
           where: { email: email }

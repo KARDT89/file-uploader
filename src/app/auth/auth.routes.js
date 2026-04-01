@@ -9,7 +9,11 @@ router.get("/register", ensureGuest, controller.getSignup);
 router.post("/register", controller.postSignup);
 
 router.get("/login", ensureGuest, controller.getLogin);
-router.post("/login", controller.postLogin);
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/auth/login",
+    failureMessage: true
+  }));
 
 router.get("/log-out", controller.logout);
 

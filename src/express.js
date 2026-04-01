@@ -29,7 +29,7 @@ export function createExpressApplication() {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use("/", authRouter);
+  app.use("/auth", authRouter);
   app.use("/", homeRouter);
   app.use("/", fileRouter);
   app.use("/", folderRouter);

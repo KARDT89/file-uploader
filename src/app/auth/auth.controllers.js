@@ -26,16 +26,7 @@ async function postSignup(req, res, next) {
   }
 }
 
-async function postLogin(req, res) {
-  // Implementation for handling login
-  await passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/login",
-    failureMessage: true
-  });
 
-  return res.json({ message: "Login successful" });
-}
 
 async function logout(res, req, next) {
   // Implementation for handling login
@@ -49,4 +40,4 @@ async function logout(res, req, next) {
   };
 }
 
-export { getLogin, getSignup, postSignup, postLogin, logout };
+export { getLogin, getSignup, postSignup, logout };
