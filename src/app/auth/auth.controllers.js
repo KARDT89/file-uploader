@@ -1,8 +1,8 @@
-import prisma from "../lib/prisma.js";
+import prisma from "../../lib/prisma.js";
 import bcrypt from "bcryptjs";
 
 function getSignup(req, res) {
-  res.render("pages/sign-up", { user: req.user });
+  res.render("pages/register", { user: req.user });
 }
 
 function getLogin(req, res) {

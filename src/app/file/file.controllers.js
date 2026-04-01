@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import prisma from "../lib/prisma.js";
+import prisma from "../../lib/prisma.js";
 
 // Make it offline first then we'll go online
 
