@@ -1,5 +1,31 @@
-import { v2 as cloudinary } from "cloudinary";
-import prisma from "../../lib/prisma.js";
+import * as fileService from './file.service.js'
+
+
+async function postFileUpload(req, res) {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    const file = await fileService.createFile({
+      name: req.file.originalname,
+      size: req.file.size,
+      url: req.file.path,
+      userId: req.user.id,
+      folderId: req.body.folderId
+    })
+    res.status(200).json({
+      success: true,
+      message: "File Uploaded",
+      file
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Upload failed" });
+  }
+}
+
+export { postFileUpload };
 
 // Make it offline first then we'll go online
 
@@ -20,31 +46,3 @@ import prisma from "../../lib/prisma.js";
 //     console.log(result);
 //   });
 // }
-
-async function postFileUpload(req, res) {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ message: "No file uploaded" });
-    }
-
-    const file = await prisma.file.create({
-      data: {
-        name: req.file.originalname,
-        size: req.file.size,
-        url: req.file.path,
-        userId: req.user.id,
-        folderId: req.body.folderId
-      }
-    });
-    res.status(200).json({
-      success: true,
-      message: "File Uploaded",
-      file
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Upload failed" });
-  }
-}
-
-export { postFileUpload };

@@ -4,12 +4,12 @@ import passport from "passport";
 import authRouter from "./app/auth/auth.routes.js";
 import homeRouter from "./app/home/home.routes.js";
 import fileRouter from "./app/file/file.routes.js";
-import folderRouter from "./app/folder/folder.routes.js";
+import folderRouter from "./app/home/home.routes.js";
 import initializePassport from "./config/passport.js";
 import session from "./config/session.js";
 
 export function createExpressApplication() {
-  const app = new express();
+  const app = express();
 
   app.use((req, res, next) => {
     console.log(`API Endpoint: ${req.method} ${req.originalUrl}`);
@@ -38,7 +38,6 @@ export function createExpressApplication() {
   app.use((req, res, next) => {
     res.status(404).send("<h1>404 - Page Not Found</h1>");
   });
-
 
   return app;
 }
