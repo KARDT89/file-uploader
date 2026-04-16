@@ -2,12 +2,12 @@
   <nav>
     <a href="/">Home</a>
     <% if (!user) { %>
-      <a href="/login">Login</a>
-      <a href="/register">Sign Up</a>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/register">Sign Up</a>
     <% } else { %>
       <p>WELCOME</p>
       <%= user.username %>
-      <a href="/log-out">Logout</a>
+      <a href="/auth/log-out">Logout</a>
     <% } %>
   </nav>
 </header>
